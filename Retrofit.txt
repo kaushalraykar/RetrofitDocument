@@ -1,0 +1,36 @@
+EXAMPLE 1
+
+FULL_URL=//www.omdbapi.com/?t=Game%20of%20Thrones&Season=1&apikey=956bb9d4
+BASE_URL=http://www.omdbapi.com/
+
+@GET()
+CALL<Your_Model_Class>getData(@Query("t") String title, @Query("Season") String seasonNumber, @Query("apikey") String key);
+?t=Game%20of%20Thrones&Season=1&apikey=956bb9d4(when key start with '&' or '?' then in retrofit we used @Query parameter see above method)
+    
+
+EXAMPLE 2
+
+FULL_URL=www.openweathermap.org/data/2.5/weather
+BASE_URL=www.openweathermap.org/
+
+@GET("/data/2.5/weather")
+CALL<Your_Model_class>getData();
+
+
+EXAMPLE 3
+    
+FULL_URL=www.openweathermap.org/data/2.5/weather?id={city id}&appid={API key}
+BASE_URL=www.openweathermap.org/
+    
+@GET("/data/2.5/weather")
+CALL<Your_Model_class>getData(@Query("id") String id,@Query("appid") String appid)
+    
+    
+EXAMPLE 4
+FULL_URL=www.google.com/consents/132(here 132 is may change so we pass through {} i.e we send through java class to method)
+BASE_URL=www.google.com/
+
+@GET("consents/{id}")
+CALL<Your_Model_Class> getConsent(@Path("id") String studyId);
+
+
